@@ -22,7 +22,7 @@ public static class Startup
             x.AddConsumer<TestConsumer>();
             x.AddBus(provider => Bus.Factory.CreateUsingRabbitMq(cfg =>
             {
-                cfg.Host("rabbitmq",h =>
+                cfg.Host(new Uri("rabbitmq://localhost"),h =>
                 {
                     h.Username("guest");
                     h.Password("guest");
