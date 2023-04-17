@@ -1,0 +1,54 @@
+version: '3.9'
+
+networks:
+  web-workplace:
+    
+services:
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    ports:
+      - 21222:15672
+      - 5672:5672
+    networks:
+      web-workplace:
+    
+  newsDB:
+    image: mongo
+    ports:
+      - 21223:27017
+    networks:
+      web-workplace:
+
+  mainDB:
+    image: postgres:latest
+    environment:
+      POSTGRES_PASSWORD: Ookazi124!
+      POSTGRES_USER: Tobias
+    ports:
+      - 21224:5432
+    networks:
+      web-workplace:
+    
+  news-api:
+    image: stargater120/news-kraken/latest
+    build:
+      context: .
+      dockerfile: NewsKraken/NewsKraken.API/Dockerfile
+    depends_on:
+      - newsDB
+      - main-api
+    networks:
+      web-workplace:
+  
+  main-api:
+    image: stargater120/webworkplace/latest
+    build:
+      context: .
+      dockerfile: WebWorkPlace.API/Dockerfile
+    depends_on:
+      - mainDB
+    ports:
+      - 2125:80
+      - 21225:443
+    networks:
+      web-workplace:
