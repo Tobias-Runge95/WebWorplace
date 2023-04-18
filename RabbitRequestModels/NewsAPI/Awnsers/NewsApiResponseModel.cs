@@ -1,4 +1,4 @@
-﻿namespace RabbitRequestModels;
+﻿namespace RabbitRequestModels.NewsAPI.Awnsers;
 
 public class NewsAPIResponseModel
 {

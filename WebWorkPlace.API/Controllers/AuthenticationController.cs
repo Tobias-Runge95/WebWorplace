@@ -1,6 +1,7 @@
 ﻿using MassTransit;
 using Microsoft.AspNetCore.Mvc;
 using RabbitRequestModels;
+using RabbitRequestModels.NewsAPI.Awnsers;
 
 namespace WebWorkPlace.API.Controllers;
 

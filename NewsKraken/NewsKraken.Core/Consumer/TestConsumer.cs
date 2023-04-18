@@ -2,7 +2,8 @@
 using Core.NewsAPI.RequestModels;
 using MassTransit;
 using RabbitRequestModels;
-using NewsAPIResponseModel = RabbitRequestModels.NewsAPIResponseModel;
+using RabbitRequestModels.NewsAPI.Requests;
+using NewsAPIResponseModel = RabbitRequestModels.NewsAPI.Awnsers.NewsAPIResponseModel;
 
 namespace Core.Consumer;
 

@@ -2,6 +2,7 @@
 using Core.NewsAPI.RequestModels;
 using Microsoft.AspNetCore.Mvc;
 using NewsKraken.Database;
+using RabbitRequestModels.NewsAPI.Requests;
 
 namespace NewsKraken.API.Controllers;
 

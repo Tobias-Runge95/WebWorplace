@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using Core;
 using Core.Consumer;
 using Core.NewsAPI;
 using MassTransit;
@@ -10,7 +11,8 @@ public static class Startup
     public static IServiceCollection RegisterServices(this IServiceCollection service)
     {
         return service
-            .AddScoped<NewsGatherer>();
+            .AddScoped<NewsGatherer>()
+            .AddScoped<ArticleMapper>();
     }
 
     public static IServiceCollection RegisterMassTransit(this IServiceCollection service)
@@ -19,7 +21,8 @@ public static class Startup
         return service.AddMassTransit(x =>
         {
             // x.AddConsumers(entryAssembly);
-            x.AddConsumer<TestConsumer>();
+            // x.AddConsumer<TestConsumer>();
+            x.AddConsumersFromNamespaceContaining<TestConsumer>();
             x.AddBus(provider => Bus.Factory.CreateUsingRabbitMq(cfg =>
             {
                 cfg.Host(new Uri("rabbitmq://localhost"),h =>

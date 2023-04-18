@@ -1,7 +1,12 @@
-﻿namespace NewsKraken.Database.Models;
+﻿using MongoDB.Bson.Serialization.Attributes;
+
+namespace NewsKraken.Database.Models;
 
 public class Article
 {
+    [BsonId]
+    public Guid Id { get; set; }
+    public Guid UserId { get; set; }
     public NewsAPISource? Source { get; set; }
     public string Author { get; set; }
     public string Title { get; set; }

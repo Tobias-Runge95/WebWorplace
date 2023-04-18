@@ -25,11 +25,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-var news = new NewsGatherer();
-await news.GatherNews(new SearchNewsModel()
-{
-    Q = "finance"
-});
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
