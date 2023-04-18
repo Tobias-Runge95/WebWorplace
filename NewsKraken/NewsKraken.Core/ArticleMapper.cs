@@ -1,6 +1,8 @@
 ﻿using Core.NewsAPI.RequestModels;
 using NewsKraken.Database.Models;
+using RabbitRequestModels.NewsAPI.Awnsers;
 using RabbitRequestModels.NewsAPI.Requests;
+using NewsAPISource = NewsKraken.Database.Models.NewsAPISource;
 
 namespace Core;
 
@@ -53,5 +55,36 @@ public class ArticleMapper
         }
 
         return mappedArticles;
+    }
+
+    public SavedArticleModel MapDBArticle(Article article)
+    {
+        return new SavedArticleModel()
+        {
+            Article = new NewsAPIArticle()
+            {
+                Author = article.Author,
+                content = article.content,
+                Description = article.Description,
+                PuplishedAt = article.PuplishedAt,
+                Source = new RabbitRequestModels.NewsAPI.Awnsers.NewsAPISource()
+                {
+                    Id = article.Source.Id,
+                    Name = article.Source.Name
+                },
+                Title = article.Title,
+                UlrToImage = article.UlrToImage,
+                Url = article.Url,
+            },
+            ArticleId = article.Id
+        };
+    }
+
+    public List<SavedArticleModel> MapDBArticles(List<Article> articles)
+    {
+        return articles.Select(x =>
+        {
+            return MapDBArticle(x);
+        }).ToList();
     }
 }
