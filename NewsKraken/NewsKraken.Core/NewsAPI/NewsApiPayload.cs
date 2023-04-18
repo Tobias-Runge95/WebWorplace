@@ -1,4 +1,6 @@
-﻿namespace Core.NewsAPI;
+﻿using RabbitRequestModels.NewsAPI.Awnsers;
+
+namespace Core.NewsAPI;
 
 public class NewsApiPayload
 {

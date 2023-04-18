@@ -17,12 +17,12 @@ public static class Startup
 
     public static IServiceCollection RegisterMassTransit(this IServiceCollection service)
     {
-        var entryAssembly = Assembly.GetExecutingAssembly();
+        var entryAssembly = GetAssemblies();
         return service.AddMassTransit(x =>
         {
-            // x.AddConsumers(entryAssembly);
+            x.AddConsumers(entryAssembly.ToArray());
             // x.AddConsumer<TestConsumer>();
-            x.AddConsumersFromNamespaceContaining<TestConsumer>();
+            // x.AddConsumersFromNamespaceContaining<TestConsumer>();
             x.AddBus(provider => Bus.Factory.CreateUsingRabbitMq(cfg =>
             {
                 cfg.Host(new Uri("rabbitmq://localhost"),h =>
@@ -36,8 +36,29 @@ public static class Startup
                     ep.UseMessageRetry(r => r.Interval(2, 100));
                     // ep.ConfigureConsumers(provider);
                     ep.ConfigureConsumer<TestConsumer>(provider);
+                    ep.ConfigureConsumer<GetNewsConsumer>(provider);
+                    ep.ConfigureConsumer<LoadArticleConsumer>(provider);
+                    ep.ConfigureConsumer<LoadAllSavedArticlesConsumer>(provider);
+                    ep.ConfigureConsumer<SaveNewsConsumer>(provider);
+                    ep.ConfigureConsumer<SaveMultipleNewsConsumer>(provider);
                 });
             }));
         });
+    }
+
+    private static List<Assembly> GetAssemblies()
+    {
+        var assembly = Assembly.GetAssembly(typeof(TestConsumer));
+        var assemblies = new List<Assembly>();
+
+        foreach (var type in assembly.ExportedTypes)
+        {
+            if (type.FullName.Contains("Consumer"))
+            {
+                assemblies.Add(type.Assembly);
+            }
+        }
+
+        return assemblies;
     }
 }

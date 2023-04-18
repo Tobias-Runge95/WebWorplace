@@ -1,5 +1,6 @@
 ﻿using Core.NewsAPI.RequestModels;
 using Newtonsoft.Json;
+using RabbitRequestModels.NewsAPI.Awnsers;
 using RabbitRequestModels.NewsAPI.Requests;
 using RestSharp;
 

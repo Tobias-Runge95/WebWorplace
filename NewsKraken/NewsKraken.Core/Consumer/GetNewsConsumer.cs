@@ -1,15 +1,16 @@
 ﻿using Core.NewsAPI;
 using MassTransit;
 using RabbitRequestModels;
+using RabbitRequestModels.NewsAPI.Awnsers;
 using RabbitRequestModels.NewsAPI.Requests;
 
 namespace Core.Consumer;
 
-public class GetNews : IConsumer<SearchNewsModel>
+public class GetNewsConsumer : IConsumer<SearchNewsModel>
 {
     private readonly NewsGatherer _newsGatherer;
 
-    public GetNews(NewsGatherer newsGatherer)
+    public GetNewsConsumer(NewsGatherer newsGatherer)
     {
         _newsGatherer = newsGatherer;
     }
