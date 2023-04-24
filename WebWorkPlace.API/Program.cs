@@ -1,9 +1,10 @@
 using MassTransit;
+using WebWorkPlace.API;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+builder.Services.RegisterServices();
 builder.Services.AddMassTransit(x =>
 {
     x.AddBus(provider => Bus.Factory.CreateUsingRabbitMq(config =>
@@ -31,7 +32,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

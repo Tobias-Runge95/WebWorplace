@@ -1,11 +1,15 @@
 ﻿using Core.NewsAPI.RequestModels;
 using MassTransit;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RabbitRequestModels.NewsAPI.Awnsers;
 using RabbitRequestModels.NewsAPI.Requests;
+using WebWorkPlace.API.Authorization.Pollecies;
 
 namespace WebWorkPlace.API.Controllers;
 
+[Authorize(Policy = LoggedIn.Name)]
+[Authorize(Policy = NewsAccess.Name)]
 [Controller, Route("controller")]
 public class NewsApiController : ControllerBase
 {

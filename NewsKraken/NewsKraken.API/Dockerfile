@@ -5,7 +5,7 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["RabbitRequestModels/RabbitRequestModels.csproj", "RabbitRequestModels/"]
+COPY ["HelperLibrary/HelperLibrary.csproj", "HelperLibrary/"]
 COPY ["NewsKraken/NewsKraken.API/NewsKraken.API.csproj", "NewsKraken/NewsKraken.API/"]
 COPY ["NewsKraken/NewsKraken.Core/NewsKraken.Core.csproj", "NewsKraken/NewsKraken.Core/"]
 COPY ["NewsKraken/NewsKraken.Database/NewsKraken.Database.csproj", "NewsKraken/NewsKraken.Database/"]

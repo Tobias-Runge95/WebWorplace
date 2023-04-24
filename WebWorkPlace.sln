@@ -12,7 +12,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsKraken.Core", "NewsKrak
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsKraken.Database", "NewsKraken\NewsKraken.Database\NewsKraken.Database.csproj", "{587A32CD-E2D1-45FA-B5DA-AE327A3C91BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitRequestModels", "RabbitRequestModels\RabbitRequestModels.csproj", "{F812AF6F-0E4D-455A-964A-4A597EC29B38}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelperLibrary", "HelperLibrary\HelperLibrary.csproj", "{F812AF6F-0E4D-455A-964A-4A597EC29B38}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

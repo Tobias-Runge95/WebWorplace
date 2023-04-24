@@ -7,7 +7,7 @@ FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
 COPY ["WebWorkPlace.API/WebWorkPlace.API.csproj", "WebWorkPlace.API/"]
 COPY ["WebWorkPlace.Core/WebWorkPlace.Core.csproj", "WebWorkPlace.Core/"]
-COPY ["RabbitRequestModels/RabbitRequestModels.csproj", "RabbitRequestModels/"]
+COPY ["HelperLibrary/HelperLibrary.csproj", "HelperLibrary/"]
 RUN dotnet restore "WebWorkPlace.API/WebWorkPlace.API.csproj"
 COPY . .
 WORKDIR "/src/WebWorkPlace.API"

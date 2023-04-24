@@ -14,7 +14,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\RabbitRequestModels\RabbitRequestModels.csproj" />
+      <ProjectReference Include="..\..\HelperLibrary\HelperLibrary.csproj" />
       <ProjectReference Include="..\NewsKraken.Database\NewsKraken.Database.csproj" />
     </ItemGroup>
 
